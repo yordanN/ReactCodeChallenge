@@ -1,27 +1,18 @@
 import companies from "@/data/companies.json"
-import { matchSorter } from "match-sorter"
+import {matchSorter} from "match-sorter"
 
 export default (req, res) => {
   const {query} = req.query
 
   let searchResults = []
 
-  if (query !== '') {
-    searchResults = matchSorter(
-      companies,
-      query,
-      {
-        keys: [
-          "company_name",
-          "local_organization_id.id",
-          "phone",
-          "email",
-        ]
-      }
-    )
+  if (query !== "") {
+    searchResults = matchSorter(companies, query, {
+      keys: ["company_name", "local_organization_id.id", "phone", "email"],
+    })
   }
 
-  const responseData = searchResults.map(result => ({
+  const responseData = searchResults.map((result) => ({
     company_name: result.company_name,
     local_organization_id: result.local_organization_id,
     score: result.score,
@@ -37,10 +28,8 @@ export default (req, res) => {
     status_code: result.status_code,
   }))
 
-  res
-    .status(200)
-    .json({
-      data: responseData,
-      count: responseData.length,
-    })
+  res.status(200).json({
+    data: responseData,
+    count: responseData.length,
+  })
 }

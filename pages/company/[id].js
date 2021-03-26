@@ -9,7 +9,7 @@ export default function Home() {
   const [highlights, setHighlights] = React.useState(null)
 
   React.useEffect(() => {
-    (async () => {
+    ;(async () => {
       if (id != null) {
         const response = await fetch("/api/company/basics/" + id)
         const {data} = await response.json()
@@ -20,7 +20,7 @@ export default function Home() {
   }, [id])
 
   React.useEffect(() => {
-    (async () => {
+    ;(async () => {
       if (id != null) {
         const response = await fetch("/api/company/highlights/" + id)
         const {data} = await response.json()
@@ -32,7 +32,7 @@ export default function Home() {
                 key,
                 ...value,
               }
-            })
+            }),
           )
         }
       }
@@ -55,11 +55,17 @@ export default function Home() {
             <div key={highlight.key}>
               <p>
                 {highlight.classification === "negative" ? (
-                  <span>👎</span>
+                  <span role="img" aria-label="negative">
+                    👎
+                  </span>
                 ) : highlight.classification === "positive" ? (
-                    <span>👍</span>
+                  <span role="img" aria-label="positive">
+                    👍
+                  </span>
                 ) : (
-                  <span>🤷‍♂️</span>
+                  <span role="img" aria-label="neutral">
+                    🤷‍♂️
+                  </span>
                 )}
                 <strong>{highlight.title}</strong>
               </p>

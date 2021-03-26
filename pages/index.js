@@ -7,7 +7,7 @@ export default function Home() {
   async function handleSearch(event) {
     const value = event.target.value
 
-    const response = await fetch('/api/search?query=' + value)
+    const response = await fetch("/api/search?query=" + value)
     const json = await response.json()
 
     setData(json)
@@ -19,12 +19,16 @@ export default function Home() {
       <div>
         {data != null ? (
           <ul>
-            {data.data.map(company => (
-              <li><Link href={`/company/${company.local_organization_id.id}`}>{company.company_name}</Link></li>
+            {data.data.map((company) => (
+              <li key={company.local_organization_id.id}>
+                <Link href={`/company/${company.local_organization_id.id}`}>
+                  {company.company_name}
+                </Link>
+              </li>
             ))}
           </ul>
         ) : null}
-      </div> 
+      </div>
     </div>
   )
 }
