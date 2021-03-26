@@ -1,18 +1,21 @@
 import * as React from "react"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
+import Management from "./Management"
+import { companyRelations } from "pages/requests"
 
 export default function Home() {
   const router = useRouter()
-  const {id} = router.query
+  const { id } = router.query
 
   const [company, setCompany] = React.useState(null)
   const [highlights, setHighlights] = React.useState(null)
+  const [relations, setRelations] = React.useState(null)
 
   React.useEffect(() => {
     (async () => {
       if (id != null) {
         const response = await fetch("/api/company/basics/" + id)
-        const {data} = await response.json()
+        const { data } = await response.json()
 
         setCompany(data)
       }
@@ -23,7 +26,7 @@ export default function Home() {
     (async () => {
       if (id != null) {
         const response = await fetch("/api/company/highlights/" + id)
-        const {data} = await response.json()
+        const { data } = await response.json()
 
         if (data != null) {
           setHighlights(
@@ -37,6 +40,14 @@ export default function Home() {
         }
       }
     })()
+  }, [id])
+
+  React.useEffect(() => {
+    if (id != null) {
+      companyRelations({ id }).then((res) => {
+        setRelations(res)
+      })
+    }
   }, [id])
 
   return (
@@ -57,7 +68,7 @@ export default function Home() {
                 {highlight.classification === "negative" ? (
                   <span>👎</span>
                 ) : highlight.classification === "positive" ? (
-                    <span>👍</span>
+                  <span>👍</span>
                 ) : (
                   <span>🤷‍♂️</span>
                 )}
@@ -68,6 +79,7 @@ export default function Home() {
           ))}
         </>
       ) : null}
+      {relations ? <Management relations={relations} /> : null}
     </div>
   )
 }
