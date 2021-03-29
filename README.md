@@ -1,10 +1,94 @@
-# Introduction
-This project was created using **Next.js**. What you have to build doesn't really have anything to do with it, but it might still be a good idea to give their documentation a quick look. If you want to create a link between pages, they have a `<Link />` component you can use instead of the regular `<a />` tag.
+# Get started
+Run the following commands in your terminal.
 
-Next.js uses **Server Side Rendering (SSR)** or **Static Site Generation (SSG)**, so there might be some pitfalls with certain styling solutions without being mindful of **server** vs **client**.
+Clone the repo
+```bash
+git clone https://github.com/RisikaApS/ReactCodeChallenge
+```
+
+Install dependencies
+```bash
+yarn
+
+# or if you prefer to use npm
+npm install
+```
+
+Run the project
+```bash
+yarn dev
+
+# or
+npm run dev
+```
+
+It should now be running on `http://localhost:3000`.
+
+# Introduction to the task
+This task was created using **Next.js**. What you have to build doesn't really have anything to do with it per se, but it might still be a good idea to give their documentation a quick look. If you want to create a link between pages, they have a `<Link />` component you can use instead of the regular `<a />` tag (although a regular link still works fine).
+
+Next.js uses **Server Side Rendering (SSR)** or **Static Site Generation (SSG)**, so there might be some pitfalls with certain styling solutions, e.g. if you are using **Material UI** you would have to wrap the component with `<NoSsr>` for the styles to apply if you are using `useStyles()`.
+
+Just something to keep in mind.
 
 **Next.js documentation**\
 https://nextjs.org/docs/getting-started
+
+# The task
+This task is expected to take about **2-5 hours** (TODO: figure out if this is true).
+
+**Dependencies**\
+You are allowed to use whatever dependency you want to solve this, but expect to be asked why you chose it. As an example, you could choose to use **Tailwind** to style the app, **react-query** for data fetching, and **date-fns** to format dates – it's all up to you.
+
+**API**\
+It will be on http://localhost:3000/api when you start the project. We have included some documentation for the API that is running locally when you start the project. You can see that here: [API Documentation](#api).
+
+## Search for a company
+As a user, it's quite crucial to be able to search for stuff. That's why your first task is to create a search functionality. This would consist of the following:
+1. A search bar the user can type in
+2. The search results displayed in a user friendly way
+
+## Show company information
+When you have searched for a company, it would be nice if you could click on the search result to get more information about it.
+
+Your second task will be to display the detailed company information. The sections we think would be relevant for you to show are the following:
+1. **General company information**. This is some of the core company information.
+2. **Highlights**. Some highlights that are generated based on their data.
+3. **Relations**. Will display the relations to this company.
+
+### General company information
+These are the fields we think would be the most relevant for you to display in this section.
+
+- vat (if they are registered for VAT)
+- email
+- phone
+- score
+- address
+- webpage
+- status
+- status_valid_from
+- company_name
+- company_type
+- powers_to_bind
+- main_industry_code
+- registered_capital
+- number_of_employees
+- date_of_incorporation
+- local_organization_id
+- company_secondary_names
+- advertisement_protection
+- risk_assessment
+
+### Highlights
+Each highlight is given a classification:  **positive**,  **negative**, or  **neutral**.
+
+They also have a  **weight**  so they can be sorted by priority (the lower the weight, the higher the priority).
+
+Your task for this section is to:
+1. Sort the highlights first by **classification** in the order **negative**, **positive**, and then **neutral**. Then they should be sorted by **weight**, so the the highest priority is first within each classification.
+2. Display the **title**, **message** and make them visually distinct by **classification** (e.g. different color and icon).
+
+### Relations (TODO)
 
 # API
 We have provided you with an API you can use to fetch data. You don't have to touch this at all, but feel free to do so if you want. The files for the API are located under `pages/api`.
