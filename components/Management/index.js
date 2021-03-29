@@ -11,16 +11,33 @@ const managementRoles = [
 ]
 
 const Management = ({ relations }) => {
-  console.log("relations", relations)
   const { management, boardOfDirectors } = relations
 
   const managementData = setManagementData(managementRoles, [
     ...management,
     ...boardOfDirectors,
   ])
+  const keys = Object.keys(managementData[0])
   return (
     <div>
-      <p>stuff</p>
+      <table>
+        <thead>
+          <tr>
+            {keys.map((key) => (
+              <th key={`only keys ${key}`}>{key}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {managementData.map((data, i) => (
+            <tr key={i}>
+              {keys.map((key) => (
+                <th key={key}>{data[key]}</th>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

@@ -16,8 +16,6 @@ const BRANCH_MANAGER = "BRANCH MANAGER"
  * Other constants *
  *******************/
 
-const DECIMALS = 2
-
 /***********
  * Helpers *
  ***********/
