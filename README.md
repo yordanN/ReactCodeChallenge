@@ -1,3 +1,11 @@
+# Introduction
+This project was created using **Next.js**. What you have to build doesn't really have anything to do with it, but it might still be a good idea to give their documentation a quick look. If you want to create a link between pages, they have a `<Link />` component you can use instead of the regular `<a />` tag.
+
+Next.js uses **Server Side Rendering (SSR)** or **Static Site Generation (SSG)**, so there might be some pitfalls with certain styling solutions without being mindful of **server** vs **client**.
+
+**Next.js documentation**\
+https://nextjs.org/docs/getting-started
+
 # API
 We have provided you with an API you can use to fetch data. You don't have to touch this at all, but feel free to do so if you want. The files for the API are located under `pages/api`.
 
