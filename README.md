@@ -38,10 +38,13 @@ https://nextjs.org/docs/getting-started
 This task is expected to take about **2-5 hours** (TODO: figure out if this is true).
 
 **Dependencies**\
-You are allowed to use whatever dependency you want to solve this, but expect to be asked why you chose it. As an example, you could choose to use **Tailwind** to style the app, **react-query** for data fetching, and **date-fns** to format dates – it's all up to you.
+You are allowed to use whatever dependency you want to solve this. As an example, you could choose to use **Tailwind** to style the app, **react-query** for data fetching, and **date-fns** to format dates – it's all up to you.
 
 **API**\
 It will be on http://localhost:3000/api when you start the project. We have included some documentation for the API that is running locally when you start the project. You can see that here: [API Documentation](#api).
+
+**Where your code goes**\
+There are only **two** files you really need to touch: `pages/index.js` and `pages/company/[id].js`. The latter files is using square brackets because of how the routing works in Next.js (dynamic routing). You can read more about how this works here: https://nextjs.org/docs/basic-features/pages
 
 ## Search for a company
 As a user, it's quite crucial to be able to search for stuff. That's why your first task is to create a search functionality. This would consist of the following:
@@ -88,7 +91,10 @@ Your task for this section is to:
 1. Sort the highlights first by **classification** in the order **negative**, **positive**, and then **neutral**. Then they should be sorted by **weight**, so the the highest priority is first within each classification.
 2. Display the **title**, **message** and make them visually distinct by **classification** (e.g. different color and icon).
 
-### Relations (TODO)
+### Relations
+For this task, most of the component is already build. The column that shows seniority needs a small change though: when the seniority is 12 or more months, it should be displayed in years (rounded to nearest whole, e.g. 1.5 years become 2 years).
+
+The styling also most likely doesn't match yours, so your task is to tweak the styling a bit so it looks consistent with the rest of your design.
 
 # API
 We have provided you with an API you can use to fetch data. You don't have to touch this at all, but feel free to do so if you want. The files for the API are located under `pages/api`.
