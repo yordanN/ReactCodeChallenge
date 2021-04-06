@@ -67,20 +67,17 @@ These are the fields we think would be the most relevant for you to display in t
 - phone
 - score
 - address
-- webpage
 - status
-- status_valid_from
 - company_name
 - company_type
-- powers_to_bind
 - main_industry_code
 - registered_capital
-- number_of_employees
 - date_of_incorporation
 - local_organization_id
 - company_secondary_names
-- advertisement_protection
 - risk_assessment
+
+You can display any of the other data points available, but the ones stated above are required.
 
 ### Highlights
 Each highlight is given a classification:  **positive**,  **negative**, or  **neutral**.
