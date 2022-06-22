@@ -15,6 +15,15 @@ const stripFunctions = (array, roles) => {
   }))
 }
 
+const formatMonthsAndYears = (months) => {
+  if (months >= 12) {
+    // More than 12 months, display the result in years rounded to the nearest year
+    const yearsRounded = Math.round(months / 12)
+    return `${yearsRounded} years`
+  }
+  return `${months} months`
+}
+
 function monthDiff(d1, d2 = new Date()) {
   let months
   months = (d2.getFullYear() - d1.getFullYear()) * 12
@@ -54,7 +63,9 @@ export const setManagementData = (managementRoles, data) => {
           from: func?.valid_from ? func?.valid_from : "-",
           seniority: func?.valid_from ? (
             <div>
-              <div>{monthDiff(new Date(func?.valid_from))} months</div>
+              <div>
+                {formatMonthsAndYears(monthDiff(new Date(func?.valid_from)))}
+              </div>
               <div
                 style={{
                   background: handleProgressBar(func?.valid_from),

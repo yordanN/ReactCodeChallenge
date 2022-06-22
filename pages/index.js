@@ -1,7 +1,15 @@
+import * as React from "react"
+import SearchBar from "@/components/SearchBar/SearchBar"
+import { Container } from "@mui/material"
+import SearchBarResults from "@/components/SearchBar/SearchBarResults"
+
 export default function Home() {
+  const [query, setQuery] = React.useState("")
+
   return (
-    <div>
-      <h1>Good luck!</h1>
-    </div>
+    <Container maxWidth={false}>
+      <SearchBar setQuery={setQuery} />
+      <SearchBarResults query={query} />
+    </Container>
   )
 }

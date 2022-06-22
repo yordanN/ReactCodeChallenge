@@ -1,14 +1,20 @@
 import companies from "@/data/companies.json"
-import {matchSorter} from "match-sorter"
+import { matchSorter } from "match-sorter"
 
 export default (req, res) => {
-  const {query} = req.query
+  const { query } = req.query
 
   let searchResults = []
 
   if (query !== "") {
+    // Modify the keys as search by phone number and email was not working correctly
     searchResults = matchSorter(companies, query, {
-      keys: ["company_name", "local_organization_id.id", "phone", "email"],
+      keys: [
+        "company_name",
+        "local_organization_id.id",
+        "phone.phonenumber",
+        "email.email",
+      ],
     })
   }
 
